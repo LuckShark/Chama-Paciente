@@ -37,7 +37,7 @@ export class TesteComponent {
       };
 
       // Abrir o modal
-      this.dialog.open(ModalComponent, {
+      const dialogRef = this.dialog.open(ModalComponent, {
         data: {
           patientName: this.lastCall.patientName,
           consultationRoom: this.lastCall.consultationRoom,
@@ -46,8 +46,17 @@ export class TesteComponent {
         height: '80%',
       });
 
-      // Fala o nome do paciente
-      this.readAloud(`${this.patientName} - ${this.consultationRoom}`);
+      // Fechar automaticamente o modal após 5 segundos
+      setTimeout(() => dialogRef.close(), 5000);
+
+      // Falar o nome do paciente
+      this.readAloud(`${this.lastCall.patientName} - ${this.lastCall.consultationRoom}`);
+
+      // Adicionar o nome à lista
+      this.previousCalls.unshift({
+        patientName: this.patientName,
+        consultationRoom: this.consultationRoom,
+      });
 
       // Limpar os campos
       this.patientName = '';
