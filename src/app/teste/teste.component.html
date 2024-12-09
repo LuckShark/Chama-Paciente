@@ -1,0 +1,50 @@
+<div class="p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">Gestão de Chamados</h1>
+  
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <!-- Input para o nome -->
+      <div>
+        <label for="patientName" class="block text-sm font-medium text-gray-700">Nome do Paciente:</label>
+        <input
+          id="patientName"
+          type="text"
+          [(ngModel)]="patientName"
+          placeholder="Digite o nome"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Input para o consultório -->
+      <div>
+        <label for="consultationRoom" class="block text-sm font-medium text-gray-700">Consultório:</label>
+        <input
+          id="consultationRoom"
+          type="text"
+          [(ngModel)]="consultationRoom"
+          placeholder="Digite o consultório"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        />
+      </div>
+    </div>
+  
+    <!-- Botão para adicionar -->
+    <button
+      (click)="addCall()"
+      class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+    >
+      Chamar Paciente
+    </button>
+  
+    <!-- Últimos chamados -->
+    <h2 class="text-xl font-semibold mt-8 mb-4">Últimos Chamados</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        *ngFor="let call of previousCalls"
+        class="bg-gray-100 p-4 rounded-lg shadow-md"
+      >
+        <p class="text-lg font-bold">{{ call.patientName }}</p>
+        <p class="text-sm text-gray-600">Consultório: {{ call.consultationRoom }}</p>
+      </div>
+    </div>
+  </div>
+  
