@@ -58,6 +58,9 @@ export class TesteComponent {
         consultationRoom: this.consultationRoom,
       });
 
+      // Remover o registro mais recente (primeiro da lista)
+      this.previousCalls.shift();
+
       // Limpar os campos
       this.patientName = '';
       this.consultationRoom = '';
